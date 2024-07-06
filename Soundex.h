@@ -6,16 +6,18 @@
 #include <string.h>
 
 char getSoundexCode(char c) {
+static const char soundexCodes[] = {
+        /* A */ '0', /* B */ '1', /* C */ '2', /* D */ '3',
+        /* E */ '0', /* F */ '1', /* G */ '2', /* H */ '0',
+        /* I */ '0', /* J */ '2', /* K */ '2', /* L */ '4',
+        /* M */ '5', /* N */ '5', /* O */ '0', /* P */ '1',
+        /* Q */ '2', /* R */ '6', /* S */ '2', /* T */ '3',
+        /* U */ '0', /* V */ '1', /* W */ '0', /* X */ '2',
+        /* Y */ '0', /* Z */ '2'
+    };
+
     c = toupper(c);
-    switch (c) {
-        case 'B': case 'F': case 'P': case 'V': return '1';
-        case 'C': case 'G': case 'J': case 'K': case 'Q': case 'S': case 'X': case 'Z': return '2';
-        case 'D': case 'T': return '3';
-        case 'L': return '4';
-        case 'M': case 'N': return '5';
-        case 'R': return '6';
-        default: return '0'; // For A, E, I, O, U, H, W, Y
-    }
+    return soundexCodes[c - 'A'];
 }
 
 void generateSoundex(const char *name, char *soundex) {
