@@ -15,7 +15,7 @@ char getSoundexCode(char c) {
     return soundexTable[c - 'A'];
 }
 
-void initializeSoundex(char *soundex, char firstCharacter) {
+void Soundexinit(char *soundex, char firstCharacter) {
     soundex[0] = toupper(firstCharacter);
     soundex[1] = soundex[2] = soundex[3] = '0';
     soundex[4] = '\0';
@@ -35,7 +35,7 @@ void processCharacter(const char *name, char *soundex, int *sIndex, int i) {
 
 
 void generateSoundex(const char *name, char *soundex) {
-    initializeSoundex(soundex, name[0]);
+    Soundexinit(soundex, name[0]);
     int sIndex = 1;
     int len = strlen(name);
     for (int i = 1; i < len; i++) {
@@ -43,4 +43,4 @@ void generateSoundex(const char *name, char *soundex) {
     }
 }
 
-#endif // SOUNDEX_H]
+#endif // SOUNDEX_H
