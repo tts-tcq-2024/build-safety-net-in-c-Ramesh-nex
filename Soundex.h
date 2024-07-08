@@ -39,4 +39,15 @@ void generateSoundex(const char *name, char *soundex) {
     soundex[4] = '\0';
 }
 
+int main() {
+    const char *name = "shiva";
+    char soundex[5]; // Soundex code will be stored here (4 characters + '\0')
+
+    generateSoundex(name, soundex);
+
+    printf("Soundex code for '%s' is '%s'\n", name, soundex);
+
+    return 0;
+}
+
 #endif // SOUNDEX_H
