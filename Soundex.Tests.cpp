@@ -4,32 +4,32 @@
 TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits) {
  //AAA
   char soundex[5];
-  generateSoundex("AX", soundex);
- ASSERT_EQ(soundex,"A200");
+  generateSoundex("BX", soundex);
+ ASSERT_EQ(soundex,"B200");
 }
 TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits_1) {
  //AAA
   char soundex[5];
-  generateSoundex("john", soundex);
- ASSERT_EQ(soundex,"A200");
+  generateSoundex("Aeiou", soundex);
+ ASSERT_EQ(soundex,"A000");
 }
 TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits_2) {
  //AAA
   char soundex[5];
-  generateSoundex("@@ty", soundex);
- ASSERT_EQ(soundex,"A200");
+  generateSoundex("Bgfp", soundex);
+ ASSERT_EQ(soundex,"B210");
 }
-TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits_Vowels) {
+TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits_3) {
  //AAA
   char soundex[5];
-  generateSoundex("uoiea", soundex);
- ASSERT_EQ(soundex,"A200");
+  generateSoundex("D#", soundex);
+ ASSERT_EQ(soundex,"D000");
 }
-TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits_Spaces) {
+TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits_4) {
  //AAA
   char soundex[5];
-  generateSoundex("   ", soundex);
- ASSERT_EQ(soundex,"A200");
+  generateSoundex("#", soundex);
+ ASSERT_EQ(soundex,"0000");
 }
 
 
