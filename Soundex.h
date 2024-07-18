@@ -5,18 +5,11 @@
 #include <ctype.h>
 #include <string.h>
 
-int isalphabet(c)
-{
-    if (c < 'A' || c > 'Z') {
-        return 1;
-    }
-    return 0;
-}
 char getSoundexCode(char c) {
     static const char soundexTable[26] = {'0', '1', '2', '3', '0', '1', '2', '0', '0', '2', '2', '4', '5','5', '0', '1', '2', '6', '2', '3', '0', '1', '0', '2', '0', '2'
     };
     c = toupper(c);
-    if (isalphabet(c))
+    if (isalpha(c))
     {
         return soundexTable[c - 'A'];
     }
