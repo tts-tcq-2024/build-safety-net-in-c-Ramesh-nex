@@ -1,37 +1,41 @@
 #include <gtest/gtest.h>
 #include "Soundex.h"
 
-TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits) {
- //AAA
-  char soundex[5];
-  generateSoundex("BX", soundex);
- ASSERT_EQ(soundex,"B200");
-}
+//Append 3 zeros if result contains less than 3 digits
 TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits_1) {
- //AAA
+//AAA
   char soundex[5];
-  generateSoundex("Aeiou", soundex);
- ASSERT_EQ(soundex,"A000");
+  generateSoundex("AX", soundex);
+  ASSERT_STREQ(soundex,"A200");
 }
+
 TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits_2) {
- //AAA
+//AAA
   char soundex[5];
-  generateSoundex("Bgfp", soundex);
- ASSERT_EQ(soundex,"B210");
+  generateSoundex("A1CDFe", soundex);
+  ASSERT_STREQ(soundex,"A231");
 }
+
+//Test case to ckeck special character
 TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits_3) {
- //AAA
+//AAA
   char soundex[5];
-  generateSoundex("D#", soundex);
- ASSERT_EQ(soundex,"D000");
+  generateSoundex("A[", soundex);
+  ASSERT_STREQ(soundex,"A000");
 }
+
+//Replace all adjacent same digits with one digit
 TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits_4) {
- //AAA
+//AAA
   char soundex[5];
-  generateSoundex("#", soundex);
- ASSERT_EQ(soundex,"0000");
+  generateSoundex("Abfp", soundex);
+  ASSERT_STREQ(soundex,"A100");
 }
 
-
-
-
+//two letters with the same number separated by 'h', 'w' or 'y' are coded as a single number
+TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits_5) {
+//AAA
+  char soundex[5];
+  generateSoundex("BShZ", soundex);
+  ASSERT_STREQ(soundex,"B200");
+}
